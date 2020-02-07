@@ -27,11 +27,16 @@
                                         <a href="/appointments" class="nav-link" role="button">Delete</a>
                         
                                     </form> --}}
-                                    <form class="nav-item" id="delete" action="/appointments/{{ $appointment->id }}" method="post">
+                                    {{-- <form class="nav-item" id="delete" action="/appointments/{{ $appointment->id }}" method="post"> --}}
+                                    <form class="nav-item" action="{{action('AppointmentController@destroy', $appointment->id)}}" method="post">
 
-                                        @method('delete')
+                                        {{-- @method('delete')
                                     
-                                        <button type="submit" form="delete" class="btn btn-primary mb-2">Delete Appointment</button>
+                                        <button type="submit" form="delete" class="btn btn-primary mb-2">Delete Appointment</button> --}}
+
+                                        {{csrf_field()}}
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
                 
                 
                                     </form>
