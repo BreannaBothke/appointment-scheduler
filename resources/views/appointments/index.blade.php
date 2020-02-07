@@ -29,7 +29,7 @@
                         <tbody>
                             @forelse ($appointments as $appointment)
                           <tr>
-                            <th scope="row">{{ $appointment->id }}</th>
+                            <th scope="row"><a href="/appointments/{{ $appointment->id }}">{{ $appointment->id }}</th>
                             <td><a href="/appointments/{{ $appointment->id }}">{{ $appointment->id }}</a></td>
                             <td>{{ $appointment->date }}</td>
                           </tr>
