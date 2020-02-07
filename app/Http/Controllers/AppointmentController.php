@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Appointment;
 use App\Client;
 use App\User;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -92,7 +93,14 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, Appointment $appointment)
     {
-        $appointment->update($this->validatedAppointmentData());
+
+        $appointment->date = $request->date;
+        $appointment->client_id = $request->client_id;
+        $appointment->user_id = $request->user_id;
+
+
+
+        $appointment->save();
 
         return redirect('/appointments');
     }
@@ -119,13 +127,13 @@ class AppointmentController extends Controller
     }
 
     protected function validatedAppointmentData()
-    {
-        return request()->validate([
-            'appointment_id' => 'required',
-            'client_id' => 'required',
-            'date' => 'required|date',
-            'user_id' => 'required'
-        ]);
-    }
+{
+    $rules = array(
+      'client_id' => 'required',
+      'date'  => 'required',
+      'user_id'      => 'required',
+);
+    $this->validate( $request , $rules);
+}   
 
 }

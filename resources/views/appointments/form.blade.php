@@ -12,9 +12,8 @@
     </div>
     <div class="form-group">
         <label for="userName">User</label>
-        <select class="form-control">
+        <select name="user_id" class="form-control">
             @foreach ($users as $user)
-                {{-- <option value="{{ $user->id }}">{{ $user->name }}</option> --}}
                 <option value={{ old('id') ?? $user->id }}>{{ $user->name }}</option>
             @endforeach
         </select>

@@ -20,16 +20,14 @@
                   
                     <h4 class="card-title text-center">Edit Appointment</h4>
 
-                    <form id="edit" action="/appointments/{{ $appointment->id }}" method="post">
+                        <form id="update" action="/appointments/{{ $appointment->id }}" method="POST" data-parsley-validate>
+                            @include('appointments.form')
+                            {{ csrf_field() }}
+                            {{ method_field('PATCH') }}
+                            <button type="submit" form="update" class="btn btn-primary mb-2">Update Appointment</button>
 
-                        @method('PUT')
+                        </form>
 
-                        @include('appointments.form')
-    
-                        <button type="submit" form="edit" class="btn btn-primary mb-2">Update Appointment</button>
-
-
-                    </form>
                 </div>
             </div>
         </div>

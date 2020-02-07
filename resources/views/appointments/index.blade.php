@@ -22,7 +22,7 @@
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First</th>
+                            <th scope="col">Client Id</th>
                             <th scope="col">Date</th>
                           </tr>
                         </thead>
@@ -30,7 +30,7 @@
                             @forelse ($appointments as $appointment)
                           <tr>
                             <th scope="row">{{ $appointment->id }}</th>
-                            <td><a href="/appointments/{{ $appointment->id }}">Client Name</a></td>
+                            <td><a href="/appointments/{{ $appointment->id }}">{{ $appointment->id }}</a></td>
                             <td>{{ $appointment->date }}</td>
                           </tr>
                             @empty

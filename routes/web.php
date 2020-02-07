@@ -33,7 +33,7 @@ Route::get('/clients/{client}/edit', 'ClientController@edit');
 Route::get('/users/{user}/edit', 'UserController@edit');
 
 
-Route::put('/appointments/{appointment}', 'AppointmentController@update');
+Route::patch('/appointments/{appointment}', 'AppointmentController@update');
 Route::put('/clients/{client}', 'ClientController@update');
 Route::put('/users/{user}', 'UserController@update');
 
@@ -55,4 +55,3 @@ Route::delete('/users/{user}', 'UserController@destroy');
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');

@@ -76,7 +76,15 @@ class ClientController extends Controller
      */
     public function update(Request $request, Client $client)
     {
-        $client->update($this->validatedData());
+        $client->name = $request->name;
+        $client->email = $request->email;
+        $client->birthdate = $request->birthdate;
+        $client->phoneNumber = $request->phoneNumber;
+
+
+
+
+        $client->save();
 
         return redirect('/clients');
     }

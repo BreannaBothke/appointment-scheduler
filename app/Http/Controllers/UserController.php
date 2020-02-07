@@ -74,7 +74,14 @@ public function index()
      */
     public function update(Request $request, User $user)
     {
-        $user->update($this->validatedUserData());
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+
+
+
+        $user->save();
 
         return redirect('/users');
     }
