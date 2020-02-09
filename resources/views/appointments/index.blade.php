@@ -21,17 +21,17 @@
                     <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Client Id</th>
+                            <th scope="col">Record #</th>
                             <th scope="col">Date</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
                             @forelse ($appointments as $appointment)
                           <tr>
-                            <th scope="row"><a href="/appointments/{{ $appointment->id }}">{{ $appointment->id }}</th>
-                            <td><a href="/appointments/{{ $appointment->id }}">{{ $appointment->id }}</a></td>
-                            <td>{{ $appointment->date }}</td>
+                            <th scope="row">{{ $appointment->id }}</th>
+                            <td>{{ date('M d, yy', strtotime($appointment->date)) }}</td>
+                            <td><a class="link" href="/appointments/{{ $appointment->id }}">View</a></td>
                           </tr>
                             @empty
                             <p>No appointments to show.</p>

@@ -40,7 +40,7 @@
 
                         <div class="card-text"><strong>Appointment Id: </strong> <p>{{ $appointment->id }}</p></div>
 
-                        <div class="card-text"><strong>Date of Appointment: </strong> <p>{{ $appointment->date }}</p></div>
+                        <div class="card-text"><strong>Date of Appointment: </strong> <p>{{ date('M d, yy', strtotime($appointment->date)) }}</p></div>
 
                         <div class="card-text"><strong>Client Name: </strong> <p>{{ $client->name }}</p></div>
 

@@ -41,6 +41,8 @@ Route::delete('/appointments/{appointment}', 'AppointmentController@destroy');
 Route::delete('/clients/{client}', 'ClientController@destroy');
 Route::delete('/users/{user}', 'UserController@destroy');
 
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 
 
 

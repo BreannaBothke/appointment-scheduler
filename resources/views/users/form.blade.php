@@ -1,10 +1,4 @@
 
-
-    <div class="form-group">
-        <label for="id">Id</label>
-        <input class="form-control" type="text" name="id" autocomplete="off" value={{ old('id') ?? $user->id }}>
-        @error('id') <p style="color: red">{{ $message }}</p> @enderror
-    </div>
     <div class="form-group">
         <label for="name">Name</label>
         <input class="form-control" type="text" name="name" autocomplete="off" value={{ old('name') ?? $user->name }}>

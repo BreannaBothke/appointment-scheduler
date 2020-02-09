@@ -10,13 +10,6 @@
                 <div class="card-header">Users</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    <a class="float-right btn btn-primary" href="/users/create">Add New User</a>
 
                     <table class="table table-hover">
                         <thead>

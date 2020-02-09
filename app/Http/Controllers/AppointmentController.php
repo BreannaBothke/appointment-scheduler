@@ -19,8 +19,9 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointments = Appointment::all();
+        $clients = Client::all();
 
-        return view('appointments.index', compact('appointments'));
+        return view('appointments.index', compact('appointments', 'clients'));
     }
 
     /**
@@ -32,8 +33,9 @@ class AppointmentController extends Controller
     {
         $appointment = new Appointment();
         $users = User::all();
+        $clients = Client::all();
         
-        return view('appointments.create', compact('appointment', 'users'));
+        return view('appointments.create', compact('appointment', 'users', 'clients'));
     }
 
     /**

@@ -99,7 +99,7 @@ public function index()
         return redirect('/users');
     }
 
-    protected function validatedUserData()
+    protected function validatedData()
     {
         return request()->validate([
             'name' => 'required',
