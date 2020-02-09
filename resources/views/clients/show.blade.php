@@ -19,13 +19,14 @@
                                     <a class="nav-link" href="/clients/{{ $client->id }}/edit">Edit</a>
                                 </li>
                                 <li class="nav-item">
-                                    <form class="nav-item" action="/clients/{{ $client->id }}" method="post">
-                                        @method('DELETE')
-                        
-                                        @csrf
-                            
-                                        <a href="#" class="nav-link" role="button">Delete</a>
-                        
+                                    <form class="nav-item" action="{{action('ClientController@destroy', $client->id)}}" method="post">
+
+
+                                        {{csrf_field()}}
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                
+                
                                     </form>
                                 </li>
                          

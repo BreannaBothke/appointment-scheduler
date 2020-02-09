@@ -23,13 +23,12 @@
                         <form id="create" action="/clients" method="post">
 
                             @method('POST')
-
+    
                             @include('clients.form')
-
-                            <button type="submit" form="create" class="btn btn-primary mb-2">Add New Client</button>
-
         
-
+                            <button type="submit" form="create" class="btn btn-primary mb-2">Create Client</button>
+    
+    
                         </form>
                    </div>
                 </div>
