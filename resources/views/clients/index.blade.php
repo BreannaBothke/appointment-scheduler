@@ -8,6 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Clients</div>
+                @if(Auth::check())
 
                 <div class="card-body">
                     @if (session('status'))
@@ -21,15 +22,18 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
+                                <th scope="col">Record #</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($clients as $client)
                                 <tr>
                                     <th scope="row">{{ $client->id }}</th>
-                                    <td><a href="/clients/{{ $client->id }}">{{ $client->name }}</a></td>
+                                    <td>{{ $client->name }}</td>
+                                    <td><a class="link" href="/clients/{{ $client->id }}">View</a></td>
+
                                 </tr>
                             @empty
                                 <p>No clients to show.</p>
@@ -43,6 +47,12 @@
                         </tbody>
                     </table>
                 </div>
+                @endif
+                @if(Auth::guest())
+                    <div class="card-text text-center">
+                        <a href="/login" class="btn btn-info"> You need to login. >></a>
+                    </div>
+                @endguest
             </div>
         </div>
     </div>

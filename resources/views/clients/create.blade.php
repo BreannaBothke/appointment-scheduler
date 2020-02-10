@@ -8,6 +8,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
+                        @if(Auth::check())
     
                             <ul class="nav nav-pills card-header-pills float-left">
                                 <li class="nav-item">
@@ -31,6 +32,12 @@
     
                         </form>
                    </div>
+                   @endif
+                @if(Auth::guest())
+                    <div class="card-text text-center">
+                        <a href="/login" class="btn btn-info"> You need to login. >></a>
+                    </div>
+                @endguest
                 </div>
            </div>
         </div>

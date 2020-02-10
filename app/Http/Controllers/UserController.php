@@ -7,6 +7,8 @@ use App\User;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -55,9 +57,13 @@ public function index()
 
     public function profile()
     {
-        $user = User::find(auth()->user()->id);
+        if (Auth::check()){
+            $user = User::find(auth()->user()->id);
 
-        return view('users.profile', compact('user'));
+            return view('users.profile', compact('user'));
+        } else {
+            return view('users.profile');
+        }
     }
     /**
      * Show the form for editing the specified resource.
@@ -81,7 +87,7 @@ public function index()
     {
         $user->update($this->validatedData());
 
-        return redirect('/users/'. $user->id);
+        return redirect('/profile');
     }
 
     /**

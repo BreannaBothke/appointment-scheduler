@@ -9,6 +9,7 @@
             <div class="card">
                 <div class="card-header">
                     @if(Auth::check())
+                        @if(Auth::user()->id == $appointment->user_id)
 
                         <ul class="nav nav-pills card-header-pills float-left">
                             <li class="nav-item">
@@ -49,9 +50,16 @@
 
 
                 </div>
+                    @else
+                    <div class="card-text text-center">
+                        <a href="/appointments" class="btn btn-info"> Access Denied.</a>
+                    </div>
+                    @endif
                 @endif
                 @if(Auth::guest())
-                <a href="/login" class="btn btn-info"> You need to login to view appointment details. >></a>
+                <div class="card-text text-center">
+                    <a href="/login" class="btn btn-info"> You need to login. >></a>
+                </div>
                 @endif
             </div>
         </div>

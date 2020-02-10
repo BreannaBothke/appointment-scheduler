@@ -8,6 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
+                    @if(Auth::check())
 
                         <ul class="nav nav-pills card-header-pills float-left">
                             <li class="nav-item">
@@ -51,11 +52,18 @@
 
                         <div class="card-text"><strong>Email: </strong> <p>{{ $client->email }}</p></div>
 
-                        <div class="card-text"><strong>DOB: </strong> <p>{{ $client->birthdate }}</p></div>
+                        <div class="card-text"><strong>DOB: </strong> <p>{{ date('M d, Y', strtotime($client->birthdate)) }}</p></div>
 
                         <div class="card-text"><strong>Phone Number: </strong> <p>{{ $client->phoneNumber }}</p></div>
 
                 </div>
+                @endif
+                @if(Auth::guest())
+                    <div class="card-text text-center">
+                        <a href="/login" class="btn btn-info"> You need to login. >></a>
+                    </div>
+                @endguest
+                
             </div>
         </div>
     </div>

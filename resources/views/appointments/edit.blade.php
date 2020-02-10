@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Appointments Page')
+@section('title', 'Edit Appointments Page')
 
 @section('content')
 <div class="container">
@@ -8,6 +8,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
+                    @if(Auth::check())
+                    @if(Auth::user()->id == $appointment->user_id)
 
                         <ul class="nav nav-pills card-header-pills float-left">
                             <li class="nav-item">
@@ -29,6 +31,18 @@
                         </form>
 
                 </div>
+                @else
+                <div class="card-text text-center">
+                    <a href="/appointments" class="btn btn-info"> Access Denied.</a>
+                </div>
+                @endif
+                @endif
+                @if(Auth::guest())
+                    <div class="card-text text-center">
+                        <a href="/login" class="btn btn-info"> You need to login. >></a>
+                    </div>
+                @endguest
+                
             </div>
         </div>
     </div>

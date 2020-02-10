@@ -9,6 +9,8 @@
             <div class="card">
 
                 <div class="card-header">Users</div>
+                @if(Auth::check())
+
 
                 @if (Auth::user()->name == 'Admin')
 
@@ -42,6 +44,12 @@
                     <a href="/home" class="btn btn-info"> You do not have access to this resource. >></a>
                     @endif
                 </div>
+                @endif
+                @if(Auth::guest())
+                    <div class="card-text text-center">
+                        <a href="/login" class="btn btn-info"> You need to login. >></a>
+                    </div>
+                @endguest
 
             </div>
         </div>

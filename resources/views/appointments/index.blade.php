@@ -51,8 +51,10 @@
                       @endif
 
                       @if(Auth::guest())
-                        <a href="/login" class="btn btn-info"> You need to login to access appointments. >></a>
-                      @endif
+                      <div class="card-text text-center">
+                        <a href="/login" class="btn btn-info"> You need to login. >></a>
+                      </div>
+                        @endif
                 </div>
             </div>
         </div>

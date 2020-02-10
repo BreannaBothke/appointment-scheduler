@@ -7,6 +7,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+                @if(Auth::check())
+
                 <div class="card-header">
 
                         <ul class="nav nav-pills card-header-pills float-left">
@@ -31,6 +33,13 @@
 
                     </form>
                 </div>
+                @else
+                <div class="card-body">
+                    <div class="card-text text-center">
+                        <a href="/login" class="btn btn-info"> You need to login. >></a>
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
     </div>

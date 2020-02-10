@@ -19,18 +19,22 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->name == 'Admin'){
-            $appointments = Appointment::all();
-            $clients = Client::all();
+        if (Auth::check()){
+            if (Auth::user()->name == 'Admin'){
+                $appointments = Appointment::all();
+                $clients = Client::all();
 
-            return view('appointments.index', compact('appointments', 'clients'));
+                return view('appointments.index', compact('appointments', 'clients'));
    
+            } else {
+                $appointments = Appointment::where('user_id', Auth::user()->id)->get();
+                $clients = Client::all();
+
+                return view('appointments.index', compact('appointments', 'clients'));
+   
+            }
         } else {
-            $appointments = Appointment::where('user_id', Auth::user()->id)->get();
-            $clients = Client::all();
-
-            return view('appointments.index', compact('appointments', 'clients'));
-   
+            return view('appointments.index');
         }
 
     }
