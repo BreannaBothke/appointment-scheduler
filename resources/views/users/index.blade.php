@@ -7,7 +7,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+
                 <div class="card-header">Users</div>
+
+                @if (Auth::user()->name == 'Admin')
 
                 <div class="card-body">
 
@@ -35,7 +38,11 @@
 
                         </tbody>
                     </table>
+                    @else
+                    <a href="/home" class="btn btn-info"> You do not have access to this resource. >></a>
+                    @endif
                 </div>
+
             </div>
         </div>
     </div>

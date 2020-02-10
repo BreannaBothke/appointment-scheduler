@@ -19,13 +19,14 @@
                                     <a class="nav-link" href="/users/{{ $user->id }}/edit">Edit</a>
                                 </li>
                                 <li class="nav-item">
-                                    <form class="nav-item" action="/users/{{ $user->id }}" method="post">
-                                        @method('DELETE')
-                        
-                                        @csrf
-                            
-                                        <a href="#" class="nav-link" role="button">Delete</a>
-                        
+                                    <form class="nav-item" action="{{action('UserController@destroy', $user->id)}}" onsubmit="return confirm('Are you sure?');" method="post">
+
+
+                                        {{csrf_field()}}
+                                        <input name="_method" type="hidden" value="DELETE">
+                                        <button class="btn btn-danger" type="submit">Delete</button>
+                
+                
                                     </form>
                                 </li>
                          
@@ -51,6 +52,8 @@
                         <div class="card-text"><strong>Email: </strong> <p>{{ $user->email }}</p></div>
 
                         <div class="card-text"><strong>Password: </strong> <p>{{ $user->password }}</p></div>
+                        
+                        <div class="card-text"><a href="/change-password" class="btn btn-primary">Change Password</a></div>
 
 
 

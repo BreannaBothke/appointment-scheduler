@@ -9,11 +9,6 @@
         <input class="form-control" type="text" name="email" autocomplete="off" value={{ old('email') ?? $user->email }}>
         @error('email') <p style="color: red">{{ $message }}</p> @enderror
     </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input class="form-control" type="text" name="password" autocomplete="off" value={{ old('password') ?? $user->password }}>
-        @error('password') <p style="color: red">{{ $message }}</p> @enderror
-    </div>
 
 
 @csrf

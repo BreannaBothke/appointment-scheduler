@@ -16,6 +16,8 @@
                         </div>
                     @endif
 
+                    @if(Auth::check())
+            
                     <a class="float-right btn btn-primary" href="/appointments/create">Add New Appointment</a>
 
                     <table class="table table-hover">
@@ -30,11 +32,13 @@
                             @forelse ($appointments as $appointment)
                           <tr>
                             <th scope="row">{{ $appointment->id }}</th>
-                            <td>{{ date('M d, yy', strtotime($appointment->date)) }}</td>
+                            <td>{{ date('M d, Y', strtotime($appointment->date)) }}</td>
                             <td><a class="link" href="/appointments/{{ $appointment->id }}">View</a></td>
                           </tr>
                             @empty
+                            <div class="card-text text-center">
                             <p>No appointments to show.</p>
+                            </div>
                             <tr>
                                 <th scope="row">#</th>
                                 <td>N/A</td>
@@ -44,6 +48,11 @@
             
                         </tbody>
                       </table>
+                      @endif
+
+                      @if(Auth::guest())
+                        <a href="/login" class="btn btn-info"> You need to login to access appointments. >></a>
+                      @endif
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@
                                     <a class="nav-link" href="/clients/{{ $client->id }}/edit">Edit</a>
                                 </li>
                                 <li class="nav-item">
-                                    <form class="nav-item" action="{{action('ClientController@destroy', $client->id)}}" method="post">
+                                    <form class="nav-item" action="{{action('ClientController@destroy', $client->id)}}" onsubmit="return confirm('Are you sure?');" method="post">
 
 
                                         {{csrf_field()}}
@@ -54,43 +54,6 @@
                         <div class="card-text"><strong>DOB: </strong> <p>{{ $client->birthdate }}</p></div>
 
                         <div class="card-text"><strong>Phone Number: </strong> <p>{{ $client->phoneNumber }}</p></div>
-
-
-{{-- <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Appointment Id</th>
-        <th scope="col">Client Id</th>
-        <th scope="col">Client Name</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">{{ $appointment->id }}</th>
-        <td>{{ $appointment->client_id }}</td>
-        <td><a href="/appointments/{{ $client->name }}">Client Name</a></td>
-        <td>
-            
-                {{-- <button><a href="/appointments/{{ $appointment->id }}/edit">Edit</a></button> --}}
-                    {{-- <a href="{{ url('/appointments/' . $appointment->id . '/edit') }}" >Edit</a>
-                    <form action="/appointments/{{ $appointment->id }}" method="post">
-                        @method('DELETE')
-            
-                        @csrf
-                    
-                        <a href="#" role="button">Delete</a>
-        
-                        {{-- <button class="btn btn-sm btn-secondary pull-right">Delete</button> --}}
-                    {{-- </form>
-            
-        </td>
-       
-      </tr>
-    </tbody>
-  </table> --}} 
-
-
 
                 </div>
             </div>

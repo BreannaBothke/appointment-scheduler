@@ -74,19 +74,20 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Client $client)
     {
-        $client->name = $request->name;
-        $client->email = $request->email;
-        $client->birthdate = $request->birthdate;
-        $client->phoneNumber = $request->phoneNumber;
+        // $client->name = $request->name;
+        // $client->email = $request->email;
+        // $client->birthdate = $request->birthdate;
+        // $client->phoneNumber = $request->phoneNumber;
+
+        $client->update($this->validatedData());
 
 
 
+        // $client->save();
 
-        $client->save();
-
-        return redirect('/clients');
+        return redirect('/clients/'. $client->id);
     }
 
     /**

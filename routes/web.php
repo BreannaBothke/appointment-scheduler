@@ -14,6 +14,8 @@
 Route::get('/appointments', 'AppointmentController@index');
 Route::get('/clients', 'ClientController@index');
 Route::get('/users', 'UserController@index');
+Route::get('/change-password', 'ChangePasswordController@index');
+Route::get('/profile', 'UserController@profile');
 
 Route::get('/appointments/create', 'AppointmentController@create');
 Route::get('/clients/create', 'ClientController@create');
@@ -22,6 +24,8 @@ Route::get('/users/create', 'UserController@create');
 Route::post('/appointments', 'AppointmentController@store');
 Route::post('/clients', 'ClientController@store');
 Route::post('/users', 'UserController@store');
+Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
+
 
 Route::get('/home', 'LoginController@index');
 Route::get('/clients/{client}', 'ClientController@show');
@@ -31,7 +35,6 @@ Route::get('/users/{user}', 'UserController@show');
 Route::get('/appointments/{appointment}/edit', 'AppointmentController@edit');
 Route::get('/clients/{client}/edit', 'ClientController@edit');
 Route::get('/users/{user}/edit', 'UserController@edit');
-
 
 Route::patch('/appointments/{appointment}', 'AppointmentController@update');
 Route::put('/clients/{client}', 'ClientController@update');

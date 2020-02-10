@@ -31,7 +31,6 @@ public function index()
 
 public function show()
     {
-        // $customer = \App\Customer::findOrFail($customerId);
         
         return view('login.show');
     }

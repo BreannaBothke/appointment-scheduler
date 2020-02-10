@@ -22,9 +22,8 @@ public function index()
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(User $user)
     {
-        $user = new User();
 
         return view('users.create', compact('user'));
     }
@@ -54,6 +53,12 @@ public function index()
 
     }
 
+    public function profile()
+    {
+        $user = User::find(auth()->user()->id);
+
+        return view('users.profile', compact('user'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -72,18 +77,11 @@ public function index()
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(User $user)
     {
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
+        $user->update($this->validatedData());
 
-
-
-
-        $user->save();
-
-        return redirect('/users');
+        return redirect('/users/'. $user->id);
     }
 
     /**
@@ -103,8 +101,6 @@ public function index()
     {
         return request()->validate([
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|password|min:5'
-        ]);
+            'email' => 'required|email'        ]);
     }
 }

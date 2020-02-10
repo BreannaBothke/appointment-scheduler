@@ -8,6 +8,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
+                    @if(Auth::check())
 
                         <ul class="nav nav-pills card-header-pills float-left">
                             <li class="nav-item">
@@ -19,7 +20,7 @@
                                     <a class="nav-link" href="/appointments/{{ $appointment->id }}/edit">Edit</a>
                                 </li>
                                 <li class="nav-item">
-                                    <form class="nav-item" action="{{action('AppointmentController@destroy', $appointment->id)}}" method="post">
+                                    <form class="nav-item" action="{{action('AppointmentController@destroy', $appointment->id)}}" onsubmit="return confirm('Are you sure?');" method="post">
 
 
                                         {{csrf_field()}}
@@ -40,7 +41,7 @@
 
                         <div class="card-text"><strong>Appointment Id: </strong> <p>{{ $appointment->id }}</p></div>
 
-                        <div class="card-text"><strong>Date of Appointment: </strong> <p>{{ date('M d, yy', strtotime($appointment->date)) }}</p></div>
+                        <div class="card-text"><strong>Date of Appointment: </strong> <p>{{ date('M d, Y', strtotime($appointment->date)) }}</p></div>
 
                         <div class="card-text"><strong>Client Name: </strong> <p>{{ $client->name }}</p></div>
 
@@ -48,6 +49,10 @@
 
 
                 </div>
+                @endif
+                @if(Auth::guest())
+                <a href="/login" class="btn btn-info"> You need to login to view appointment details. >></a>
+                @endif
             </div>
         </div>
     </div>
